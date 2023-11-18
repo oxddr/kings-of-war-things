@@ -60,7 +60,7 @@ openscad_artifact = rule(
     attrs = {
         "deps": attr.label_list(providers = [OpenSCADLibraryInfo]),
         "src": attr.label(allow_single_file = [".scad"], mandatory = True),
-        "type": attr.string(default = "stl", values = ["stl", "off", "dxf", "csg"]),
+        "type": attr.string(default = "stl", values = ["stl", "off", "dxf", "csg", "svg"]),
         "_openscad": attr.label(cfg = "exec", executable = True, allow_files = True, default = Label("//tools:openscad")),
     },
     outputs = {
