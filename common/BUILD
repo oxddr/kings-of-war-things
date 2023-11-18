@@ -12,3 +12,9 @@ openscad_library(
     name = "params",
     srcs = ["params.scad"],
 )
+
+openscad_library(
+    name = "libtray",
+    srcs = ["libtray.scad"],
+    deps = [":kow"],
+)
