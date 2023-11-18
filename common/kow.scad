@@ -3,12 +3,12 @@ include <params.scad>;
 module MagnetSockets(unit_type, only_diagonal = false) {
   baseSize = BaseSize(unit_type);
 
-  translate([ 5, baseSize[1] - 5 ]) children();
-  translate([ baseSize[0] - 5, 5 ]) children();
+  translate([ 5, baseSize[1] - 5 ]) children(0);
+  translate([ baseSize[0] - 5, 5 ]) children(0);
 
   if (!only_diagonal) {
-    translate([ 5, 5 ]) children();
-    translate([ baseSize[0] - 5, baseSize[1] - 5 ]) children();
+    translate([ 5, 5 ]) children(0);
+    translate([ baseSize[0] - 5, baseSize[1] - 5 ]) children(0);
   }
 }
 

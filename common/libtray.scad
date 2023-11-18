@@ -1,11 +1,10 @@
 include <kow.scad>
 
-module MagnetHole() { Magnet(offset = -kerf); }
 
 module TrayFullMagnets(unit_type, unitSize) {
   Tray(unit_type, unitSize) {
     Grid(size = BaseNum(unit_type, unitSize), spacing = BaseSize(unit_type)) {
-      MagnetSockets(unit_type);
+      Sockets(unit_type);
     }
   }
 }
@@ -31,6 +30,8 @@ module Grid(size = [ 1, 1 ], spacing = [ 0, 0 ]) {
     translate([ i * spacing[0], j * spacing[1] ]) { children(0); }
   }
 }
+
+module MagnetHole() { Magnet(offset = -kerf); }
 
 module Sockets(unit_type) {
   MagnetSockets(unit_type) { MagnetHole(); }
