@@ -4,19 +4,19 @@ set -euo pipefail
 
 # Function to recursively rename directories to Camel Case and replace _ with spaces
 rename_directories() {
-    local target_directory="$1"
+  local target_directory="$1"
 
-    if [ -z "$target_directory" ]; then
-        echo "Usage: $0 <directory>"
-        exit 1
-    fi
+  if [ -z "$target_directory" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+  fi
 
-    if [ ! -d "$target_directory" ]; then
-        echo "Error: '$target_directory' is not a valid directory."
-        exit 1
-    fi
+  if [ ! -d "$target_directory" ]; then
+    echo "Error: '$target_directory' is not a valid directory."
+    exit 1
+  fi
 
-    find "$target_directory" -depth -type d -not -name "$target_directory" -exec bash -c '
+  find "$target_directory" -depth -type d -not -name "$target_directory" -exec bash -c '
     for dirpath do
       # Get the base directory name
       dirname=$(basename "$dirpath")
@@ -89,11 +89,10 @@ copy_and_delete() {
   fi
 }
 
-
 # Check if source and destination directories are provided
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <source_directory> <destination_directory>"
-    exit 1
+  echo "Usage: $0 <source_directory> <destination_directory>"
+  exit 1
 fi
 
 # Run the function with the provided source and destination directories
