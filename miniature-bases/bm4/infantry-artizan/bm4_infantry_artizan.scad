@@ -1,4 +1,4 @@
-use <bases/libbase.scad>
+use <miniature-bases/libbase.scad>
 use <common/kow.scad>
 
 $fn = $preview ? 32 : 64;
