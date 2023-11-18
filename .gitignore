@@ -1,0 +1,51 @@
+# FILEPATH: /Users/janluk/src/github.com/oxddr/kings-of-war-things/.gitignore
+
+# Bazel build artifacts
+/bazel-*
+
+# Bazel output directories
+/bazel-bin/
+/bazel-genfiles/
+/bazel-out/
+/bazel-testlogs/
+
+# Bazel workspace files
+/bazel-*.*
+/bazel-*
+
+# Bazel cache
+/.bazel/
+
+# Bazel test logs
+/testlogs/
+
+# Bazel coverage reports
+/coverage/
+
+# Bazel profiling data
+/profile/
+
+# Bazel remote cache
+/remote/
+
+# Bazel generated documentation
+/docs/
+
+# Bazel generated tags
+/tags/
+
+# Bazel generated workspace files
+/workspace.bazel*
+
+# Bazel generated lock files
+/WORKSPACE.lock
+/WORKSPACE.bazel.lock
+
+# Bazel generated bazelisk files
+/.bazelversion
+
+# Bazel generated bazelisk cache
+/.bazelisk/
+
+# Bazel generated bazelisk logs
+/bazelisk.log
