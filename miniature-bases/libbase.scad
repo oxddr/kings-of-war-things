@@ -27,7 +27,7 @@ module SlottaBM4(a = 0, unit_type = "infantry", slot_margin = 1.5) {
       (base_size[0] - 2 * slot_margin - cos(90 - a) * slot_width) / cos(a);
 
   BaseBM4(unit_type = unit_type, only_diagonal = true) {
-    translate(0.5 * base_size) rotate(-a)
+    translate(0.5 * base_size) rotate(a)
         square([ slot_length, slot_width ], center = true);
   };
 }
