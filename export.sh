@@ -95,7 +95,10 @@ if [ "$#" -ne 2 ]; then
   exit 1
 fi
 
-# Run the function with the provided source and destination directories
+# Change the current working directory to the directory where the script is located
+cd "$(dirname "$0")" || exit 1
+
+bazel build ...
 copy_stl_and_svg_files "$1" "tmp-export"
 rename_directories "tmp-export"
 copy_and_delete "tmp-export" "$2"
