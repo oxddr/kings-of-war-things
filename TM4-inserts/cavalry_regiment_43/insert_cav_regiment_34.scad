@@ -2,8 +2,6 @@ use <TM4-inserts/libinsert.scad>;
 use <common/kow.scad>;
 use <common/libtray.scad>;
 
-$fn = $preview ? 32 : 64;
-
 linear_extrude(height = 3) {
   Tray(unit_type = "cavalry", unitSize = "regiment") {
     union() {

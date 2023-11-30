@@ -1,7 +1,6 @@
 use <common/kow.scad>
 use <miniature-bases/libbase.scad>
 
-$fn = $preview ? 32 : 64;
 
 base_size = BaseSize("infantry");
 length = 19;

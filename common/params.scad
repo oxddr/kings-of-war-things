@@ -1,3 +1,5 @@
+$fn = $preview ? 32 : 64;
+
 // Value of kerf to apply when lasercutting things.
 // Value is based on the experience using Epilog Mini machine in
 // Google WFC Makerspace.

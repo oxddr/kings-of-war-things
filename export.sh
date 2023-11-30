@@ -98,6 +98,7 @@ fi
 # Change the current working directory to the directory where the script is located
 cd "$(dirname "$0")" || exit 1
 
+bazel clean
 bazel build ...
 copy_stl_and_svg_files "$1" "tmp-export"
 rename_directories "tmp-export"
