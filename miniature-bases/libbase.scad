@@ -16,7 +16,10 @@ module BaseBM4(unit_type, only_diagonal = false) {
   }
 }
 
-module SlottaBM4(a = 0, unit_type = "infantry", slot_margin = 1.5) {
+SLOTTA_ANGLE = 0;
+SLOTTA_SLOT_MARGIN = 1.5; 
+
+module SlottaBM4(a = SLOTTA_ANGLE, unit_type = "infantry", slot_margin = SLOTTA_SLOT_MARGIN) {
   slot_width = 1.9;  // or 1.8
   base_size = BaseSize(unit_type);
 
