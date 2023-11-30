@@ -1,6 +1,6 @@
 use <common/kow.scad>
 use <miniature-bases/libbase.scad>
-
+include <common/params.scad>
 
 base_size = BaseSize("infantry");
 length = 19;
