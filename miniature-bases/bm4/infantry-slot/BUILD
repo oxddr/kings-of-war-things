@@ -8,7 +8,7 @@ openscad_artifact(
     },
     module = "SlottaBM4",
     deps = [
-        "//miniature-bases:libbase",
         "//common:kow",
+        "//miniature-bases:libbase",
     ],
 )

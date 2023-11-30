@@ -4,7 +4,7 @@ openscad_artifact(
     name = "infantry_filler_8x1",
     src = "infantry_filler_8x1.scad",
     deps = [
-        "//miniature-bases:libbase",
         "//common:kow",
+        "//miniature-bases:libbase",
     ],
 )

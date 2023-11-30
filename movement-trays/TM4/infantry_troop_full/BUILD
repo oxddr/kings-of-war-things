@@ -5,7 +5,7 @@ openscad_artifact(
     src = "inf_troop_full.scad",
     type = "svg",
     deps = [
-        "//common:libtray",
         "//common:kow",
+        "//common:libtray",
     ],
 )
