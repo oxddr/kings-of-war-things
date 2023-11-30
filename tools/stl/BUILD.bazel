@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "stl_lib",
+    srcs = ["normalizer.go"],
+    importpath = "github.com/example/project/tools/stl",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_hschendel_stl//:go_default_library"],
+)
+
+go_binary(
+    name = "stl",
+    embed = [":stl_lib"],
+    visibility = ["//visibility:public"],
+)
