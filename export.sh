@@ -44,8 +44,10 @@ copy_stl_and_svg_files() {
     exit 1
   fi
 
-  # Resolve symlink if the source is a symlink
-  source_directory=$(readlink -f "$source_directory")
+  if [ -L "$source_directory" ]; then
+    # Resolve symlink if the source is a symlink
+    source_directory=$(readlink -f "$source_directory")
+  fi
 
   if [ ! -d "$source_directory" ]; then
     echo "Error: '$source_directory' is not a valid directory."
@@ -55,7 +57,7 @@ copy_stl_and_svg_files() {
   # Create destination directory if it doesn't exist
   mkdir -p "$destination_directory"
 
-  rsync -r --prune-empty-dirs --include='*/' --include='*.stl' --include='*.svg' --exclude='*' "$source_directory/" "$destination_directory"
+  rsync -r --prune-empty-dirs --include='*/' --exclude='*non_normalized.stl' --include='*.stl' --include='*.svg' --exclude='*' "$source_directory/" "$destination_directory"
   echo "STL and SVG files copied from '$source_directory' to '$destination_directory'"
 }
 
@@ -98,7 +100,6 @@ fi
 # Change the current working directory to the directory where the script is located
 cd "$(dirname "$0")" || exit 1
 
-bazel clean
 bazel build ...
 copy_stl_and_svg_files "$1" "tmp-export"
 rename_directories "tmp-export"

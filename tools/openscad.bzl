@@ -77,7 +77,7 @@ def _artifact_impl(ctx):
         env = {"OPENSCADPATH": ":".join([".", ctx.bin_dir.path, ctx.genfiles_dir.path])},
     )
 
-openscad_artifact = rule(
+_openscad_artifact = rule(
     implementation = _artifact_impl,
     attrs = {
         "deps": attr.label_list(providers = [OpenSCADLibraryInfo]),
@@ -91,3 +91,42 @@ openscad_artifact = rule(
         "out": "%{name}.%{type}",
     },
 )
+
+def _normalize_stl_impl(ctx):
+    ctx.actions.run(
+        outputs = [ctx.outputs.out],
+        inputs = [ctx.file.src],
+        executable = ctx.executable._tool,
+        arguments = ["--input=" + ctx.file.src.path, "--output=" + ctx.outputs.out.path],
+        mnemonic = "NormalizeSTL",
+    )
+
+_normalize_stl = rule(
+    implementation = _normalize_stl_impl,
+    attrs = {
+        "src": attr.label(allow_single_file = [".stl"]),
+        "_tool": attr.label(cfg = "exec", executable = True, allow_files = True, default = Label("//tools/stl:stl")),
+    },
+    outputs = {
+        "out": "%{name}.stl",
+    },
+)
+
+def openscad_artifact(name, normalize = False, **kwargs):
+    if "type" not in kwargs:
+        kwargs["type"] = "stl"
+    if normalize and kwargs["type"] != "stl":
+        fail("normalization is only supported for STL files")
+    if not normalize:
+        _openscad_artifact(name = name, **kwargs)
+    else:
+        non_normalized = name + "_non_normalized"
+        _openscad_artifact(
+            name = non_normalized,
+            **kwargs
+        )
+        _normalize_stl(
+            name = name,
+            src = non_normalized + ".stl"
+        )
+
