@@ -46,6 +46,9 @@ def _artifact_impl(ctx):
     if ctx.attr.type == "png":
         args.add("--render")
     args.add(ctx.file.src.path)
+    if ctx.attr.defines:
+        args.add("-D")
+        args.add_all(["%s=%s" % (k, ctx.attr.defines[k]) for k in ctx.attr.defines])
     ctx.actions.run(
         outputs = [ctx.outputs.out],
         inputs = _srcs(ctx, ctx.file.src),
@@ -61,6 +64,7 @@ openscad_artifact = rule(
         "deps": attr.label_list(providers = [OpenSCADLibraryInfo]),
         "src": attr.label(allow_single_file = [".scad"], mandatory = True),
         "type": attr.string(default = "stl", values = ["stl", "off", "dxf", "csg", "svg"]),
+        "defines": attr.string_dict(default = {}),
         "_openscad": attr.label(cfg = "exec", executable = True, allow_files = True, default = Label("//tools:openscad")),
     },
     outputs = {
