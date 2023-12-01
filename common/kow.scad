@@ -21,14 +21,15 @@ module Base(unit_type, extraMargin = [ 0, 0 ]) {
 }
 
 function BaseSize(unit_type) = unit_type == "infantry"  ? [ 20, 20 ]
-                              : unit_type == "cavalry" ? [ 25, 50 ]
-                                                      : [ 10, 10 ];
+                               : unit_type == "cavalry" ? [ 25, 50 ]
+                                                        : [ 10, 10 ];
 
-function BaseNum(unit_type, unitSize) = unit_type == "infantry"
-                                           ? unitSize == "horde" ? [ 10, 4 ]
-                                             : unitSize == "regiment" ? [ 5, 4 ]
-                                                                      : [ 5, 2 ]
-                                       : unit_type == "cavalry"
-                                           ? unitSize == "regiment" ? [ 5, 2 ]
-                                                                    : [ 5, 1 ]
-                                           : [ 1, 1 ];
+function BaseNum(unit_type,
+                 unitSize) = unit_type == "infantry"
+                                 ? unitSize == "legion"     ? [ 10, 6 ]
+                                   : unitSize == "horde"    ? [ 10, 4 ]
+                                   : unitSize == "regiment" ? [ 5, 4 ]
+                                                            : [ 5, 2 ]
+                             : unit_type == "cavalry"
+                                 ? unitSize == "regiment" ? [ 5, 2 ] : [ 5, 1 ]
+                                 : [ 1, 1 ];
