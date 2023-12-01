@@ -1,4 +1,3 @@
-use <TM4-inserts/libinsert.scad>;
 use <common/kow.scad>;
 use <common/libtray.scad>;
 

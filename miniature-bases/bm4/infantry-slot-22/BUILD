@@ -4,8 +4,5 @@ openscad_artifact(
     name = "bm4_infantry_slot_22",
     defines = {"SLOTTA_ANGLE": "22"},
     module = "SlottaBM4",
-    deps = [
-        "//common:kow",
-        "//miniature-bases:libbase",
-    ],
+    deps = ["//miniature-bases:libbase"],
 )

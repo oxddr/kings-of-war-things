@@ -7,8 +7,5 @@ openscad_artifact(
         "SLOTTA_SLOT_MARGIN": "1",
     },
     module = "SlottaBM4",
-    deps = [
-        "//common:kow",
-        "//miniature-bases:libbase",
-    ],
+    deps = ["//miniature-bases:libbase"],
 )
