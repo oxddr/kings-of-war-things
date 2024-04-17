@@ -1,15 +1,11 @@
 include <common/kow.scad>;
 
-module MagnetHole() { Magnet(offset = magnet_spacing); } 
-
 module BaseBM4(unit_type, only_diagonal = false) {
   linear_extrude(height = base_height) {
     difference() {
       Base(unit_type = unit_type);
       union() {
-        MagnetSockets(unit_type = unit_type, only_diagonal = only_diagonal) {
-          MagnetHole();
-        }
+        BM4Sockets(unit_type, magnet_spacing, only_diagonal);
         children();
       }
     }
@@ -17,11 +13,11 @@ module BaseBM4(unit_type, only_diagonal = false) {
 }
 
 SLOTTA_ANGLE = 0;
-SLOTTA_SLOT_MARGIN = 1.5; 
-SLOT_WIDTH = 1.7;  
+SLOTTA_SLOT_MARGIN = 1.5;
+SLOT_WIDTH = 1.7;
 
-
-module SlottaBM4(a = SLOTTA_ANGLE, unit_type = "infantry", slot_margin = SLOTTA_SLOT_MARGIN) {
+module SlottaBM4(a = SLOTTA_ANGLE, unit_type = "infantry",
+                 slot_margin = SLOTTA_SLOT_MARGIN) {
   base_size = BaseSize(unit_type);
 
   // slot_length = 18; for a = 0 (as in GW bases)

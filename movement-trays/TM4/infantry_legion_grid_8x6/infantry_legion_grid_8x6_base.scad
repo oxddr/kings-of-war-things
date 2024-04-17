@@ -5,5 +5,7 @@ unitType = "infantry";
 unitSize = "legion";
 
 Tray(unitType, unitSize) {
-  AdjustingGrid(unitType, unitSize, gridSize = [ 8, 5 ]) { Sockets("infantry"); }
+  AdjustingGrid(unitType, unitSize, gridSize = [ 8, 5 ]) {
+    BM4Sockets("infantry", spacing = -kerf);
+  }
 }

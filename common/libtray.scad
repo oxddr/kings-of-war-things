@@ -5,7 +5,7 @@ margin = [ 0.5, 0.5 ];
 module TrayFullMagnets(unit_type, unitSize) {
   Tray(unit_type, unitSize) {
     Grid(size = BaseNum(unit_type, unitSize), spacing = BaseSize(unit_type)) {
-      Sockets(unit_type);
+      BM4Sockets(unit_type, -kerf);
     }
   }
 }
@@ -62,10 +62,4 @@ module TrayGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
     AdjustingGrid(unitType, unitSize, gridSize) { 
       translate(margin / 2) Base(unitType); }
   }
-}
-
-module MagnetHole() { Magnet(offset = -kerf); }
-
-module Sockets(unit_type) {
-  MagnetSockets(unit_type) { MagnetHole(); }
 }
