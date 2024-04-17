@@ -53,6 +53,19 @@ openscad_artifact(
 )
 
 openscad_artifact(
+    name = "infantry_legion",
+    src = "plain.scad",
+    defines = {
+        "unit_type": "\"infantry\"",
+        "unit_size": "\"legion\"",
+    },
+    type = "svg",
+    deps = [
+        "//common:libtray",
+    ],
+)
+
+openscad_artifact(
     name = "lrginf_troop",
     src = "plain.scad",
     defines = {
