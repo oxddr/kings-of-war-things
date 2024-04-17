@@ -32,7 +32,7 @@ module Grid(size = [ 1, 1 ], spacing = [ 0, 0 ]) {
   }
 }
 
-// AdjustingGrid returns a grid of elements. 
+// AdjustingGrid returns a grid of elements.
 // The margins between elements are calculated to be equal and fill the tray.
 module AdjustingGrid(unitType, unitSize, gridSize = [ 1, 1 ], margin = margin) {
   base_num = BaseNum(unitType, unitSize);
@@ -59,7 +59,11 @@ module TrayGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
         Base(unitType, extraMargin = margin);
       }
     }
-    AdjustingGrid(unitType, unitSize, gridSize) { 
-      translate(margin / 2) Base(unitType); }
+    AdjustingGrid(unitType, unitSize, gridSize) {
+      translate(margin / 2) difference() {
+        Base(unitType);
+        BM4Sockets(unitType, -kerf);
+      }
+    }
   }
 }
