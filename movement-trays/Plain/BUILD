@@ -82,7 +82,7 @@ openscad_artifact(
     name = "monster",
     src = "plain.scad",
     defines = {
-        "unit_type": "\"monster\"",
+        "unit_type": "\"lrgcav\"",
     },
     type = "svg",
     deps = [
@@ -95,6 +95,19 @@ openscad_artifact(
     src = "plain.scad",
     defines = {
         "unit_type": "\"titan\"",
+    },
+    type = "svg",
+    deps = [
+        "//common:libtray",
+    ],
+)
+
+openscad_artifact(
+    name = "lrgcav_regiment",
+    src = "plain.scad",
+    defines = {
+        "unit_type": "\"lrgcav\"",
+        "unit_size": "\"regiment\"",
     },
     type = "svg",
     deps = [
