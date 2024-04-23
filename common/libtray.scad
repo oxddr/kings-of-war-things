@@ -48,6 +48,30 @@ module AdjustingGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
   translate(tm) Grid(size = gridSize, spacing = total_spacing) { children(0); }
 }
 
+module DiagonalGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
+  base_num = BaseNum(unitType, unitSize);
+  base_size = BaseSize(unitType);
+
+  tm = [
+    (base_size[0] * (base_num[0] - gridSize[0]) / (gridSize[0] + 1)),
+    (base_size[1] * (base_num[1] - gridSize[1]) / (gridSize[1] + 1)),
+  ];
+
+  spacing = base_size + tm;
+
+  translate(tm) {
+    for (i = [0:gridSize[0] - 1], j = [0:2:gridSize[1] - 1]) {
+      translate([ i * spacing[0], j * spacing[1] ]) { children(0); }
+    }
+
+    for (i = [0:gridSize[0] - 2], j = [1:2:gridSize[1] - 1]) {
+      translate([ spacing[0] * 0.5, 0 ]) {
+        translate([ i * spacing[0], j * spacing[1] ]) { children(0); }
+      }
+    }
+  }
+}
+
 module TrayGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
   union() {
     Tray(unit_type = unitType, unitSize = unitSize) {
