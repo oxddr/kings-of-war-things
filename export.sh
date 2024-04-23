@@ -57,7 +57,10 @@ copy_stl_and_svg_files() {
   # Create destination directory if it doesn't exist
   mkdir -p "$destination_directory"
 
-  rsync -r --prune-empty-dirs --include='*/' --exclude='*non_normalized.stl' --include='*.stl' --include='*.svg' --exclude='*' "$source_directory/" "$destination_directory"
+  rsync -r --prune-empty-dirs \
+    --include='*/' --exclude='*non_normalized.stl' --include='*.stl' --include='*.svg' --exclude='*' \
+    --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r \
+    "$source_directory/" "$destination_directory"
   echo "STL and SVG files copied from '$source_directory' to '$destination_directory'"
 }
 
