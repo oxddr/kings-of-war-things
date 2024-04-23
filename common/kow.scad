@@ -39,6 +39,6 @@ function BaseNum(unit_type, unitSize) =
                                : unitSize == "regiment" ? [ 5, 4 ]
                                                         : [ 5, 2 ]
     : unit_type == "cavalry" ? unitSize == "regiment" ? [ 5, 2 ] : [ 5, 1 ]
-    : unit_type == "lrginf"  ? unitSize == "regiment" ? [ 3, 2 ] : [ 3, 1 ]
+    : unit_type == "lrginf"  ? unitSize == "regiment" ? [ 3, 1 ] : [ 3, 2 ]
     : unit_type == "lrgcav"  ? unitSize == "regiment" ? [ 3, 1 ] : [ 1, 1 ]
                              : [ 1, 1 ];

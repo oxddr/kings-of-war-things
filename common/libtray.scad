@@ -1,6 +1,6 @@
 include <kow.scad>
 
-margin = [ 0.5, 0.5 ];
+margin = [ 1.5, 1.5 ];
 
 module TrayFullMagnets(unit_type, unitSize) {
   Tray(unit_type, unitSize) {
@@ -34,20 +34,16 @@ module Grid(size = [ 1, 1 ], spacing = [ 0, 0 ]) {
 
 // AdjustingGrid returns a grid of elements.
 // The margins between elements are calculated to be equal and fill the tray.
-module AdjustingGrid(unitType, unitSize, gridSize = [ 1, 1 ], margin = margin) {
+module AdjustingGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
   base_num = BaseNum(unitType, unitSize);
   base_size = BaseSize(unitType);
 
   tm = [
-    ((base_num[0] * base_size[0]) -
-     (gridSize[0] * (base_size[0] + margin[0]))) /
-        (gridSize[0] + 1),
-    ((base_num[1] * base_size[1]) -
-     (gridSize[1] * (base_size[1] + margin[1]))) /
-        (gridSize[1] + 1),
+    (base_size[0] * (base_num[0] - gridSize[0]) / (gridSize[0] + 1)),
+    (base_size[1] * (base_num[1] - gridSize[1]) / (gridSize[1] + 1)),
   ];
 
-  total_spacing = base_size + tm + margin;
+  total_spacing = base_size + tm;
 
   translate(tm) Grid(size = gridSize, spacing = total_spacing) { children(0); }
 }
@@ -56,11 +52,11 @@ module TrayGrid(unitType, unitSize, gridSize = [ 1, 1 ]) {
   union() {
     Tray(unit_type = unitType, unitSize = unitSize) {
       AdjustingGrid(unitType, unitSize, gridSize) {
-        Base(unitType, extraMargin = margin);
+        translate(margin * -0.5) Base(unitType, extraMargin = margin);
       }
     }
     AdjustingGrid(unitType, unitSize, gridSize) {
-      translate(margin / 2) difference() {
+      difference() {
         Base(unitType);
         BM4Sockets(unitType, -kerf);
       }
