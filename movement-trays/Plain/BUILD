@@ -66,11 +66,11 @@ openscad_artifact(
 )
 
 openscad_artifact(
-    name = "lrginf_troop",
+    name = "lrginf_horde",
     src = "plain.scad",
     defines = {
         "unit_type": "\"lrginf\"",
-        "unit_size": "\"troop\"",
+        "unit_size": "\"horde\"",
     },
     type = "svg",
     deps = [
