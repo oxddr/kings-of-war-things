@@ -1,12 +1,11 @@
 include <common/libtray.scad>;
+use <common/kow.scad>;
 
-Tray(unit_type = "cavalry", unitSize = "regiment") {
-  union() {
-    translate([ 5, 0 ]) Grid(size = [ 4, 1 ], spacing = [ 30, 0 ]) {
-      BM4Sockets("cavalry", spacing = -kerf);
-    }
-    translate([ 20, 50 ]) Grid(size = [ 3, 1 ], spacing = [ 30, 0 ]) {
-      BM4Sockets("cavalry", spacing = -kerf);
-    }
+unitType = "cavalry";
+unitSize = "regiment";
+
+Tray(unitType, unitSize) {
+  DiagonalGrid(unitType, unitSize, gridSize = [ 4, 2 ]) {
+    BM4Sockets(unitType, spacing = -kerf);
   }
 }
