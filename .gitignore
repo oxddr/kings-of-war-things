@@ -49,3 +49,5 @@
 
 # Bazel generated bazelisk logs
 /bazelisk.log
+
+.env

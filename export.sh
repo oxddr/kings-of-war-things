@@ -46,7 +46,7 @@ copy_stl_and_svg_files() {
 
   if [ -L "$source_directory" ]; then
     # Resolve symlink if the source is a symlink
-    source_directory=$(readlink -f "$source_directory")
+    source_directory=$(greadlink -f "$source_directory")
   fi
 
   if [ ! -d "$source_directory" ]; then
