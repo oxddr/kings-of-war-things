@@ -26,12 +26,13 @@ module Base(unit_type, extraMargin = [ 0, 0 ]) {
   square(BaseSize(unit_type) + extraMargin);
 }
 
-function BaseSize(unit_type) = unit_type == "infantry"  ? [ 20, 20 ]
-                               : unit_type == "cavalry" ? [ 25, 50 ]
-                               : unit_type == "lrginf"  ? [ 40, 40 ]
-                               : unit_type == "lrgcav"  ? [ 50, 50 ]
-                               : unit_type == "titan"   ? [ 75, 75 ]
-                                                        : [ 10, 10 ];
+function BaseSize(unit_type) = unit_type == "infantry"         ? [ 20, 20 ]
+                               : unit_type == "heavy_infantry" ? [ 25, 25 ]
+                               : unit_type == "cavalry"        ? [ 25, 50 ]
+                               : unit_type == "lrginf"         ? [ 40, 40 ]
+                               : unit_type == "lrgcav"         ? [ 50, 50 ]
+                               : unit_type == "titan"          ? [ 75, 75 ]
+                                                               : [ 10, 10 ];
 
 function BaseNum(unit_type, unitSize) =
     unit_type == "infantry"  ? unitSize == "legion"     ? [ 10, 6 ]
